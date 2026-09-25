@@ -9,13 +9,11 @@ db.students.find(
   { _id: 0, studentId: 1, name: 1, department: 1, cgpa: 1 }
 );
 
-
 /* 2. Students with attendance below 75% */
 db.students.find(
   { attendancePercentage: { $lt: 75 } },
   { _id: 0, studentId: 1, name: 1, attendancePercentage: 1 }
 );
-
 
 /* 3. Average CGPA by department */
 db.students.aggregate([
@@ -29,13 +27,11 @@ db.students.aggregate([
   { $sort: { averageCGPA: -1 } }
 ]);
 
-
 /* 4. Top 10 students by CGPA */
 db.students.find(
   {},
   { _id: 0, studentId: 1, name: 1, department: 1, cgpa: 1 }
 ).sort({ cgpa: -1 }).limit(10);
-
 
 /* 5. Average assessment percentage by department */
 db.assessments.aggregate([
@@ -48,7 +44,6 @@ db.assessments.aggregate([
   },
   { $sort: { averagePercentage: -1 } }
 ]);
-
 
 /* 6. Campus events with high participation */
 db.campus_events.find(
@@ -63,7 +58,6 @@ db.campus_events.find(
   }
 ).sort({ attendedParticipants: -1 });
 
-
 /* 7. Facilities with high utilization */
 db.facilities.find(
   { utilizationPercentage: { $gt: 80 } },
@@ -76,7 +70,6 @@ db.facilities.find(
     conditionScore: 1
   }
 ).sort({ utilizationPercentage: -1 });
-
 
 /* 8. Unresolved complaints */
 db.complaints.find(
@@ -92,7 +85,6 @@ db.complaints.find(
   }
 ).sort({ priority: 1 });
 
-
 /* 9. Average complaint resolution time by category */
 db.complaints.aggregate([
   {
@@ -104,7 +96,6 @@ db.complaints.aggregate([
   },
   { $sort: { averageResolutionTime: -1 } }
 ]);
-
 
 /* 10. Student performance risk analysis using $lookup */
 db.students.aggregate([
@@ -136,7 +127,6 @@ db.students.aggregate([
   }
 ]);
 
-
 /* 11. Department-wise student statistics */
 db.students.aggregate([
   {
@@ -150,13 +140,11 @@ db.students.aggregate([
   { $sort: { averageCGPA: -1 } }
 ]);
 
-
 /* 12. Students having MongoDB as a skill */
 db.students.find(
   { skills: "MongoDB" },
   { _id: 0, studentId: 1, name: 1, department: 1, skills: 1 }
 );
-
 
 /* 13. Top-performing students in each department */
 db.students.aggregate([
@@ -178,7 +166,6 @@ db.students.aggregate([
   }
 ]);
 
-
 /* 14. Attendance status distribution */
 db.attendance.aggregate([
   {
@@ -190,7 +177,6 @@ db.attendance.aggregate([
   },
   { $sort: { count: -1 } }
 ]);
-
 
 /* 15. Create indexes for faster student queries */
 db.students.createIndex({ studentId: 1 });
