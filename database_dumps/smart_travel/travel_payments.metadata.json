@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"b036d24439624d5fa3ef84e71b671f35","collectionName":"travel_payments","type":"collection"}
